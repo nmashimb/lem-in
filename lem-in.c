@@ -1,5 +1,4 @@
 #include "lemin.h"
-#include <stdio.h>
 
 void    free_all(char **str, char *rooms, char *connections, char *s, char *points, r_list **head){
   char **tmp = str;
@@ -37,10 +36,8 @@ ants = atoi(str[0]);
 if (!validate(str, rooms))
   return (0);
 ft_create_rooms_list(&head, rooms); 
-paths = "0231"; //func returning path //
 ft_printf_farm(str);
 ft_move_ants(&head, paths, ants, points[2]);
 free_all(str, rooms, connections, s, points, &head);
-printf("%s\n", connections);
 return (0);
 }
