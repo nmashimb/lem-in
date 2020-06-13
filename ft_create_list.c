@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_next_room_empty.c                               :+:      :+:    :+:   */
+/*   ft_create_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmashimb/kntshoko <marvin@42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,38 @@
 
 #include "lemin.h"
 
-int     ft_next_room_empty(r_list **head, int next_room, int end){
-  r_list *trav;
+static  void ft_create_rooms(r_list **rooms, char *room_name)
+{
+	r_list *p;
 
-  trav = *head;
-  while (trav != NULL){
-    if (trav->room_nbr == next_room && trav->occupied == '1' && trav->room_nbr != end)
-      return (0);
-    trav = trav->next;
-  }
-  return (1);
+	p = (r_list *)malloc(sizeof(r_list));
+	p->room = room_name;
+	p->occupied = '0';
+	p->ant_count = 0;
+	p->visitor = 0;
+	p->forward = 1;
+	p->used = 0;
+	p->links[0] = NULL;
+	if(*rooms == NULL)
+	{
+		p -> next = NULL;
+		*rooms = p;
+	}
+	else
+	{
+		p->next = *rooms;
+		*rooms = p;
+	}
+}
+
+void	ft_create_list(r_list **head, char **rooms)
+{
+	size_t i;
+    
+    i = 0;
+	while(rooms[i] != NULL)
+	{
+		ft_create_rooms(head,rooms[i]);
+		i++;
+	}
 }

@@ -14,13 +14,13 @@
 
 static void   ft_print_walk(r_list *room){
   ft_putstr("L");
-  ft_putnbr(room->visitor);
+  ft_putnbr(room->visitor); 
   ft_putstr(" - ");
-  ft_putchar(room->room);
+  ft_putstr(room->room);
   ft_putstr(" ");
 }
 
-void   ft_occupy_room(r_list **head, char next_room, int ant){
+void   ft_occupy_room(r_list **head, int next_room, int ant, int end){
   r_list *trav;
 
   trav = *head;
@@ -32,11 +32,11 @@ void   ft_occupy_room(r_list **head, char next_room, int ant){
     trav->occupied = '0';
   }
   trav = *head;
-  while (trav != NULL && trav->room != next_room)
+  while (trav != NULL && trav->room_nbr != next_room)
     trav = trav->next;
   trav->visitor = ant;
   trav->occupied = '1';
-  if (trav->room == '1'){
+  if (trav->room_nbr == end){
     trav->ant_count++;
   }
   ft_print_walk(trav);

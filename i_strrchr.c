@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_next_room_empty.c                               :+:      :+:    :+:   */
+/*   i_strrchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmashimb/kntshoko <marvin@42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,13 @@
 
 #include "lemin.h"
 
-int     ft_next_room_empty(r_list **head, int next_room, int end){
-  r_list *trav;
+int	i_strrchr(const char *s, int c)
+{
+	int l;
 
-  trav = *head;
-  while (trav != NULL){
-    if (trav->room_nbr == next_room && trav->occupied == '1' && trav->room_nbr != end)
-      return (0);
-    trav = trav->next;
-  }
-  return (1);
+	l = ft_strlen(s) + 1;
+	while (l--)
+		if (s[l] == (unsigned char)c)
+			return (l);
+	return (0);
 }

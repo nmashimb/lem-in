@@ -12,15 +12,16 @@
 
 #include "lemin.h"
 
-void	ft_add_rooms(r_list **rooms, char room_no)
+void	ft_add_rooms(r_list **rooms, int room_no)
 {
 	r_list	*p;
 
 	p = (r_list *)malloc(sizeof(r_list));
-	p->room = room_no;
-  p->visitor = 0;
-  p->occupied = '0';
-  p->ant_count= 0;
+	p->room_nbr = room_no;
+  	p->visitor = 0;
+  	p->occupied = '0';
+  	p->ant_count= 0;
+	p->links[0] = NULL;
 	if (*rooms == NULL)
 	{
 		p->next = NULL;

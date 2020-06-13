@@ -12,12 +12,12 @@
 
 #include "lemin.h"
 
-int     ft_end_full(r_list **head, char end, int ants){
+int     ft_end_full(r_list **head, int end, int ants){
   r_list *trav;
 
   trav = *head;
   while (trav != NULL){
-    if (trav->room == end){
+    if (trav->room_nbr == end){
       if (trav->ant_count == ants)
         return (1);
     }

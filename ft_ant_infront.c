@@ -12,12 +12,12 @@
 
 #include "lemin.h"
 
-int     ft_ant_infront(r_list **head, char end){
+int     ft_ant_infront(r_list **head, int end){
   r_list *trav;
 
   trav = *head;
   while (trav != NULL){
-    if (trav->room == end){
+    if (trav->room_nbr == end){
       return ((trav->ant_count) + 1);
     }
     trav = trav->next;

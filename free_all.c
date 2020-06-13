@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-void    free_all(char **str, char *rooms, char *connections, char *s, char *points, r_list **head){
+void    free_all(char **str, char **names, char *rooms, char *connections, char *s, char **points, r_list **head){
   char **tmp = str;
   while (*tmp != NULL)
   {
@@ -20,10 +20,30 @@ void    free_all(char **str, char *rooms, char *connections, char *s, char *poin
   }
   free(str);
   ft_strdel(&rooms);
-  ft_strdel(&points); 
+  tmp = points;
+  while (*tmp != NULL)
+  {
+    ft_strdel(&(*tmp++));
+  }
+  free(points);
+
+  tmp = names;
+  while (*tmp != NULL)
+  {
+    ft_strdel(&(*tmp++));
+  }
+  free(names);
+
   ft_strdel(&s);
   ft_strdel(&connections);
-  while (*head != NULL){
+  while (*head != NULL)
+  {
+	  int i = 0;
+  	while ((*head)->links[i] != NULL)
+  	{
+    	ft_strdel(&((*head)->links[i++]));
+  	}
+
     ft_pop_list(head);
   }
 }

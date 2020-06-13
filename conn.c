@@ -27,7 +27,7 @@ char    *conn(char **str)
    s = ft_strstr(str[i], "-");
    if (s != NULL)
    {
-    temp = ft_joint(con, " ; ", str[i]);
+    temp = ft_joint(con, ";", str[i]);
     ft_strdel(&con);
     con = ft_strdup(temp);
     ft_strdel(&temp);    

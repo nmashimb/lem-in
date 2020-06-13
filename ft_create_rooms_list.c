@@ -12,14 +12,12 @@
 
 #include "lemin.h"
 
-void   ft_create_rooms_list(r_list **head, char *rooms){
-  size_t i;
+void   ft_create_rooms_list(r_list **head, int *rooms_no, int path_len){
+  int i;
 
   i = 0;
-  while (i < ft_strlen(rooms)){
-    if (ft_isdigit(rooms[i])){
-      ft_add_rooms(head, rooms[i]);
-    }
+  while (i < path_len){
+      ft_add_rooms(head, rooms_no[i]);
     i++;
   }
 }

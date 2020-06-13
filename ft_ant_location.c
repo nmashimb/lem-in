@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-int   ft_ant_location(r_list **head, char *paths, int ant){
+int   ft_ant_location(r_list **head, int *paths, int ant, int path_len){
   r_list  *trav;
   int  indx;
 
@@ -20,8 +20,8 @@ int   ft_ant_location(r_list **head, char *paths, int ant){
   indx = 0;
   while (trav != NULL){
     if (ant == trav->visitor){
-      while (paths[indx] != '\0'){
-        if (trav->room == paths[indx])
+      while (indx < path_len){
+        if (trav->room_nbr == paths[indx])
           return (indx);
         indx++;
       }

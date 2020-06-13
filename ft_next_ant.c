@@ -12,7 +12,7 @@
 
 #include "lemin.h"
 
-int      ft_next_ant(r_list **head, char end, int ant, int ants){
+int      ft_next_ant(r_list **head, int end, int ant, int ants){
   if (ant == ants){
     ant = ft_ant_infront(head, end);
     ft_putstr("\n");

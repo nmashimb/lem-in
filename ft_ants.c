@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_next_room_empty.c                               :+:      :+:    :+:   */
+/*   ft_ants.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmashimb/kntshoko <marvin@42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,14 @@
 
 #include "lemin.h"
 
-int     ft_next_room_empty(r_list **head, int next_room, int end){
-  r_list *trav;
+int		ft_ants(char **str){
+	int		i;
 
-  trav = *head;
-  while (trav != NULL){
-    if (trav->room_nbr == next_room && trav->occupied == '1' && trav->room_nbr != end)
-      return (0);
-    trav = trav->next;
-  }
-  return (1);
+	i = 0;
+	while (str[i] != NULL && ft_strcmp(str[i], "##start") != 0){
+		if (ft_wordc(str[i], ' ') == 1 && ft_isdigit(str[i][0]) == 1)
+			return(i);
+		i++;
+	}
+	return(-1);
 }

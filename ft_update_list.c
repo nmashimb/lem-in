@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_next_room_empty.c                               :+:      :+:    :+:   */
+/*   ft_update_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmashimb/kntshoko <marvin@42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,31 @@
 
 #include "lemin.h"
 
-int     ft_next_room_empty(r_list **head, int next_room, int end){
-  r_list *trav;
+int		ft_update_list(r_list **head, char *paths, int *path_indx){
+	char 	**tmp;
+	r_list	*trv;
+    char **temp;
+	int		i;
 
-  trav = *head;
-  while (trav != NULL){
-    if (trav->room_nbr == next_room && trav->occupied == '1' && trav->room_nbr != end)
-      return (0);
-    trav = trav->next;
-  }
-  return (1);
+	i = 0;
+	tmp = ft_strsplit(paths, ' ');
+	while (tmp[i] != NULL){
+		trv = *head;
+		while (trv != NULL){
+			if (ft_strcmp(tmp[i], trv->room) == 0){
+				trv->room_nbr = i;
+				path_indx[i] = i;
+			}
+			trv = trv->next;
+		}
+		i++;
+	}
+	temp = tmp;
+	i = 0;
+  	while (temp[i] != NULL)
+  	{
+    	ft_strdel(&temp[i++]);
+  	}
+  	free(tmp);
+	return (i);
 }
